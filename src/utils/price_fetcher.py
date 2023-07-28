@@ -1,6 +1,5 @@
 import requests
 import json
-from datetime import datetime, timedelta
 
 V2_EXCHANGE_ENDPOINTS = {
     "mainnet": "https://api.thegraph.com/subgraphs/name/sushiswap/exchange",
