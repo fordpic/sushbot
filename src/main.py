@@ -1,5 +1,5 @@
 import discord
-from discord.ext import tasks, commands
+from discord.ext import tasks
 import os
 from dotenv import load_dotenv
 
@@ -27,6 +27,7 @@ async def change_price_status():
 async def on_ready():
     print(f"{client.user} has connected to Discord!")
     change_price_status.start()
+    # Will put next task start here while it loops above
 
 
 client.run(TOKEN)
