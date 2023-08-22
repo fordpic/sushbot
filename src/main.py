@@ -29,7 +29,7 @@ async def change_price_status():
 
 
 # COMMANDS
-# 24h volume
+# Total Volume
 @bot.command(name="volume")
 async def volume(ctx):
     sushi_vol = fetch_token_vols({"mainnet": [MAINNET_SUSHI_ADDRESS]})["mainnet"][
@@ -37,6 +37,9 @@ async def volume(ctx):
     ]
 
     await ctx.send(f"Current SUSHI volume: {sushi_vol:.2f}")
+
+
+# NEED: 24hr + 1hr volume commands
 
 
 @bot.event
