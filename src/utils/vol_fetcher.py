@@ -6,7 +6,7 @@ V2_EXCHANGE_ENDPOINTS = {
 }
 
 
-def fetch_token_vol(token_addresses):
+def fetch_token_vols(token_addresses):
     current_token_vol_query = """
     query tokenVolumeQuery($tokenAddress: String!) {
         token(id: $tokenAddress) {
