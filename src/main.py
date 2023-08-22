@@ -30,9 +30,10 @@ async def change_vol_status():
         MAINNET_SUSHI_ADDRESS
     ]
 
-    await client.change_presence(
-        activity=discord.Game(name=f"24hr Volume: ${sushi_vol:.2f}")
-    )
+    # Need different presence to update
+    # await client.change_presence(
+    #     activity=discord.Game(name=f"24hr Volume: ${sushi_vol}")
+    # )
 
 
 @client.event
