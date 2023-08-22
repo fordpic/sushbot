@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 
 from utils.price_fetcher import fetch_token_prices
 from utils.vol_fetcher import fetch_token_vols
+from utils.holders_fetcher import fetch_total_holders
 
 load_dotenv()
 TOKEN = os.getenv("DISCORD_TOKEN")
@@ -40,6 +41,14 @@ async def volume(ctx):
 
 
 # NEED: 24hr + 1hr volume commands
+
+
+# Total number of SUSHI holders
+@bot.command(name="holders")
+async def holders(ctx):
+    total_holders = fetch_total_holders({"mainnet": [MAINNET_SUSHI_ADDRESS]})
+
+    await ctx.send(f"Current number of SUSHI holders: {total_holders}")
 
 
 @bot.event

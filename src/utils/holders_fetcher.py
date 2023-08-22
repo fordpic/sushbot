@@ -26,6 +26,7 @@ def fetch_total_holders(token_addresses):
             )
 
             data = json.loads(result.text)
+            print(data)
             user_counts[chain][token] = data["data"]["sushis"]["userCount"]
 
         return user_counts
