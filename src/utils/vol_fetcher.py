@@ -5,6 +5,8 @@ V2_EXCHANGE_ENDPOINTS = {
     "mainnet": "https://api.thegraph.com/subgraphs/name/sushiswap/exchange",
 }
 
+# Need more queries for dynamically calling
+
 
 def fetch_token_vols(token_addresses):
     current_token_vol_query = """
@@ -27,7 +29,6 @@ def fetch_token_vols(token_addresses):
             )
 
             data = json.loads(result.text)
-            # print(float(data["data"]["token"]["volumeUSD"]))
             token_vols[chain][token] = data["data"]["token"]["volumeUSD"]
 
         return token_vols

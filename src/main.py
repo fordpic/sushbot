@@ -11,8 +11,6 @@ TOKEN = os.getenv("DISCORD_TOKEN")
 
 MAINNET_SUSHI_ADDRESS = "0x6b3595068778dd592e39a122f4f5a5cf09c90fe2"
 
-# client = discord.Client(intents=discord.Intents.default(), command_prefix="!")
-
 intents = discord.Intents.default()
 intents.message_content = True
 bot = commands.Bot(command_prefix="!", intents=intents)
@@ -41,17 +39,10 @@ async def volume(ctx):
     await ctx.send(f"Current SUSHI volume: {sushi_vol:.2f}")
 
 
-async def change_vol_status():
-    sushi_vol = fetch_token_vols({"mainnet": [MAINNET_SUSHI_ADDRESS]})["mainnet"][
-        MAINNET_SUSHI_ADDRESS
-    ]
-
-
 @bot.event
 async def on_ready():
     print(f"{bot.user} has connected to Discord!")
     change_price_status.start()
-    change_vol_status.start()
 
 
 bot.run(TOKEN)
