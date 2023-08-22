@@ -1,5 +1,5 @@
 import discord
-from discord.ext import tasks
+from discord.ext import tasks, commands
 import os
 from dotenv import load_dotenv
 
@@ -11,36 +11,47 @@ TOKEN = os.getenv("DISCORD_TOKEN")
 
 MAINNET_SUSHI_ADDRESS = "0x6b3595068778dd592e39a122f4f5a5cf09c90fe2"
 
-client = discord.Client(intents=discord.Intents.default())
+# client = discord.Client(intents=discord.Intents.default(), command_prefix="!")
+
+intents = discord.Intents.default()
+intents.message_content = True
+bot = commands.Bot(command_prefix="!", intents=intents)
 
 
+# TASKS
+# Opening task, called upon init - sets "Game" to current $SUSHI price in USD
 @tasks.loop(minutes=30)
 async def change_price_status():
     sushi_price = fetch_token_prices({"mainnet": [MAINNET_SUSHI_ADDRESS]})["mainnet"][
         MAINNET_SUSHI_ADDRESS
     ]
-    await client.change_presence(
+    await bot.change_presence(
         activity=discord.Game(name=f"Sushi Price: ${sushi_price:.2f}")
     )
 
 
-@tasks.loop(minutes=30)
+# COMMANDS
+# 24h volume
+@bot.command(name="volume")
+async def volume(ctx):
+    sushi_vol = fetch_token_vols({"mainnet": [MAINNET_SUSHI_ADDRESS]})["mainnet"][
+        MAINNET_SUSHI_ADDRESS
+    ]
+
+    await ctx.send(f"Current SUSHI volume: {sushi_vol:.2f}")
+
+
 async def change_vol_status():
     sushi_vol = fetch_token_vols({"mainnet": [MAINNET_SUSHI_ADDRESS]})["mainnet"][
         MAINNET_SUSHI_ADDRESS
     ]
 
-    # Need different presence to update
-    # await client.change_presence(
-    #     activity=discord.Game(name=f"24hr Volume: ${sushi_vol}")
-    # )
 
-
-@client.event
+@bot.event
 async def on_ready():
-    print(f"{client.user} has connected to Discord!")
+    print(f"{bot.user} has connected to Discord!")
     change_price_status.start()
     change_vol_status.start()
 
 
-client.run(TOKEN)
+bot.run(TOKEN)
