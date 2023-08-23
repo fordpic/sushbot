@@ -11,6 +11,7 @@ load_dotenv()
 TOKEN = os.getenv("DISCORD_TOKEN")
 
 MAINNET_SUSHI_ADDRESS = "0x6b3595068778dd592e39a122f4f5a5cf09c90fe2"
+DEPLOYMENT_ADDY_DOCS = "https://dev.sushi.com/docs/Developers/Deployment%20Addresses"
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -30,6 +31,9 @@ async def change_price_status():
 
 
 # COMMANDS
+
+
+# METRIC COMMANDS
 # Total Volume
 @bot.command(name="volume")
 async def volume(ctx):
@@ -51,6 +55,16 @@ async def holders(ctx):
     await ctx.send(f"Current number of SUSHI holders: {total_holders}")
 
 
+# TEXT COMMANDS
+# Get link to deployment addresses
+@bot.command(name="addresses")
+async def addys(ctx):
+    deployment_addys = f"All of the contract deployment addresses can be found here: [Deployment Addresses]({DEPLOYMENT_ADDY_DOCS})"
+
+    await ctx.send(deployment_addys)
+
+
+# On Ready
 @bot.event
 async def on_ready():
     print(f"{bot.user} has connected to Discord!")
