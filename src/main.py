@@ -64,6 +64,42 @@ async def addys(ctx):
     await ctx.send(deployment_addys)
 
 
+# Get total # of chains Sushi is deployed across w/ names
+@bot.command(name="chains")
+async def chains(ctx):
+    chainz = """
+    The Sushi app can be utilized across 26 different blockchains at the moment. Those chains are:
+    - Ethereum (Mainnet)
+    - Arbitrum One
+    - Arbitrum Nova
+    - Base
+    - Core
+    - Polygon
+    - Polygon zkEVM
+    - Optimism
+    - BNB Smart Chain
+    - Avalanche (C-Chain)
+    - ThunderCore
+    - Fantom
+    - Gnosis
+    - Metis
+    - Kava
+    - Celo
+    - BitTorrent
+    - Boba (ETH / AVAX / BNB)
+    - Moonbeam
+    - Moonriver
+    - Fuse
+    - OKXChain
+    - Harmony
+    - Palm
+    - Telos
+    - Huobi
+"""
+
+    await ctx.send(chainz)
+
+
 # On Ready
 @bot.event
 async def on_ready():
