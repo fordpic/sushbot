@@ -110,7 +110,7 @@ async def links(ctx):
     [Website](https://www.sushi.com/)
     [Documentation](https://docs.sushi.com/)
     [Sushi Academy](https://www.sushi.com/academy)
-    [Newsletter]()
+    [Sushi Express](https://sushiexpress.substack.com/)
     [Blog](https://www.sushi.com/blog)
     [Governance Forum](https://forum.sushi.com/)
     [Snapshot](https://snapshot.org/#/sushigov.eth)
