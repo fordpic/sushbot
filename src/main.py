@@ -101,6 +101,26 @@ async def chains(ctx):
     await ctx.send(chainz)
 
 
+# Important Links
+@bot.command(name="links")
+async def links(ctx):
+    linkz = """
+    Here is an official list of the most helpful links:
+
+    [Website](https://www.sushi.com/)
+    [Documentation](https://docs.sushi.com/)
+    [Sushi Academy](https://www.sushi.com/academy)
+    [Newsletter]()
+    [Blog](https://www.sushi.com/blog)
+    [Governance Forum](https://forum.sushi.com/)
+    [Snapshot](https://snapshot.org/#/sushigov.eth)
+    [Github](https://github.com/sushiswap)
+    [Twitter](https://twitter.com/SushiSwap)
+"""
+
+    await ctx.send(linkz)
+
+
 # On Ready
 @bot.event
 async def on_ready():
