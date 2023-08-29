@@ -13,14 +13,15 @@ OI_KEY = os.getenv("OI_KEY")
 
 MAINNET_SUSHI_ADDRESS = "0x6b3595068778dd592e39a122f4f5a5cf09c90fe2"
 DEPLOYMENT_ADDY_DOCS = "https://dev.sushi.com/docs/Developers/Deployment%20Addresses"
-OI_ENDPOINT = "https://api.coinalyze.net/v1/open-interest/symbols=SUSHI"
 
 intents = discord.Intents.default()
 intents.message_content = True
 bot = commands.Bot(command_prefix="!", intents=intents)
 
 
-# TASKS
+# ****TASKS****
+
+
 # Opening task, called upon init - sets "Game" to current $SUSHI price in USD
 @tasks.loop(minutes=30)
 async def change_price_status():
@@ -32,7 +33,7 @@ async def change_price_status():
     )
 
 
-# COMMANDS
+# ****COMMANDS****
 
 
 # METRIC COMMANDS
