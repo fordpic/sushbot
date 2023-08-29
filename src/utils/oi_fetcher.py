@@ -1,7 +1,7 @@
 import requests
 import json
 
-OI_API_ENDPOINT = "https://api.coinalyze.net/v1/open-interest?symbols="
+OI_API_ENDPOINT = "https://api.coinalyze.net/v1/open-interest?symbols=SUSHIUSDT_PERP.A"
 
 
 def fetch_oi(api_key):
@@ -12,6 +12,6 @@ def fetch_oi(api_key):
 
     data = json.loads(result.text)
     print(data)
-    current_oi = data
+    current_oi = data[0]["value"]
 
     return current_oi
