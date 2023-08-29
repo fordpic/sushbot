@@ -9,9 +9,11 @@ from utils.holders_fetcher import fetch_total_holders
 
 load_dotenv()
 TOKEN = os.getenv("DISCORD_TOKEN")
+OI_KEY = os.getenv("OI_KEY")
 
 MAINNET_SUSHI_ADDRESS = "0x6b3595068778dd592e39a122f4f5a5cf09c90fe2"
 DEPLOYMENT_ADDY_DOCS = "https://dev.sushi.com/docs/Developers/Deployment%20Addresses"
+OI_ENDPOINT = "https://api.coinalyze.net/v1/open-interest/symbols=SUSHI"
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -45,6 +47,8 @@ async def volume(ctx):
 
 
 # NEED: 24hr + 1hr volume commands
+
+# Current OI for SUSHI
 
 
 # Total number of SUSHI holders
