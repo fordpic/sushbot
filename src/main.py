@@ -56,7 +56,7 @@ async def volume(ctx):
 async def oi(ctx):
     current_oi = fetch_oi(OI_KEY)
 
-    await ctx.send(f"The current open interest for SUSHI is: {current_oi}")
+    await ctx.send(f"The current open interest for SUSHI is: {current_oi:,d}")
 
 
 # Total number of SUSHI holders
