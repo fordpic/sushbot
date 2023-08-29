@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 from utils.price_fetcher import fetch_token_prices
 from utils.vol_fetcher import fetch_token_vols
 from utils.holders_fetcher import fetch_total_holders
+from utils.oi_fetcher import fetch_oi
 
 load_dotenv()
 TOKEN = os.getenv("DISCORD_TOKEN")
@@ -49,7 +50,13 @@ async def volume(ctx):
 
 # NEED: 24hr + 1hr volume commands
 
+
 # Current OI for SUSHI
+@bot.command(name="oi")
+async def oi(ctx):
+    current_oi = fetch_oi(OI_KEY)
+
+    await ctx.send(f"The current open interest for SUSHI is: {current_oi}")
 
 
 # Total number of SUSHI holders
